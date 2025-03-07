@@ -44,10 +44,8 @@ I'm a backend developer specializing in **Rust**, **Golang**, and **Python**. I 
 
 ## 📫 Contact
 
-- **Email**: [your.email@example.com](mailto:your.email@example.com)
-- **LinkedIn**: [Your Name](https://www.linkedin.com/in/yourprofile/)
-- **Twitter**: [@YourHandle](https://twitter.com/YourHandle)
+- **Email**: [m202372126@hust.edu.cn](mailto:your.email@example.com)
 
 ---
 
-⭐️ From [Your Name](https://github.com/yourusername)
+⭐️ From [Your Name](https://github.com/Jasonhonghh)
