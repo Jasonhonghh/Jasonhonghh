@@ -26,7 +26,6 @@ I'm a backend developer specializing in **Rust**, **Golang**, and **Python**. I 
 
 ---
 
----
 
 ## 📊 Stats
 
