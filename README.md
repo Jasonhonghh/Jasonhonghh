@@ -26,12 +26,6 @@ I'm a backend developer specializing in **Rust**, **Golang**, and **Python**. I 
 
 ---
 
-## 🚀 Projects
-
-- **[Project 1](https://github.com/yourusername/project1)** - Short description.
-- **[Project 2](https://github.com/yourusername/project2)** - Short description.
-- **[Project 3](https://github.com/yourusername/project3)** - Short description.
-
 ---
 
 ## 📊 Stats
