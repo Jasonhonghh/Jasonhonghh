@@ -1,4 +1,4 @@
-# Hi, I'm [Jasonhonghh] 👋
+# Hi, I'm Jasonhonghh 👋
 
 I'm a backend developer specializing in **Rust**, **Golang**, and **Python**. I build scalable, efficient, and cloud-native systems.
 
