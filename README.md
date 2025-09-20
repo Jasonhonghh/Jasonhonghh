@@ -11,7 +11,7 @@
 - [Arceos-usb](https://github.com/arceos-usb/arceos_experiment/tree/usb-camera-base/crates/driver_usb/src/usb/universal_drivers/cdc_drivers)：Arceos，清华开源的操作系统，
   使用Rust开发，采用组件化思想。（补充了一部分USB控制器和USB转串口的驱动代码，项目很有意思，推荐学习！）
 - [multi-modal-network](https://github.com/multi-modal-network)：多模态网络，在网络层推行与IP协议并行的其它协议，采用不同的寻址和路由方法，整个网络由一批控制器统一控制。
-  （想法不错，难以推广，项目已完结）
+  （想法不错，难以推广，项目已完结。）
 - [Golang-Wheels](https://github.com/Jasonhonghh/Golang-Wheels)：Golang的手搓轮子合集，不搓轮子的程序员，不是好厨师。
 
 ### 🌱 正在学习
