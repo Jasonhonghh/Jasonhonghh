@@ -15,9 +15,7 @@
 - [Golang-Wheels](https://github.com/Jasonhonghh/Golang-Wheels)：Golang的手搓轮子合集，不搓轮子的程序员，不是好厨师。
 
 ### 🌱 正在学习
-- 后端技术栈
-- 分布式系统
-- 机器学习
+- 后端技术栈、分布式系统、机器学习算法
 
   
 ### 📫 联系我
