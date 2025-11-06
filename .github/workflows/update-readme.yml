@@ -33,6 +33,9 @@ jobs:
           WEREAD_COOKIE: ${{ secrets.WEREAD_COOKIE }}
         run: python weread_sync.py
 
+      - name: Run Blog sync script
+        run: python blog_sync.py
+
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions[bot]'
