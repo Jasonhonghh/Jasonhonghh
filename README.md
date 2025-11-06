@@ -4,9 +4,8 @@
 
 ### 📖 Posts
 <!--blog start-->
-*   [好用的第三方库](https://dev-insight.cloud/tips/libs/)
-*   [开发的技巧](https://dev-insight.cloud/tips/blogs/)
-*   [About](https://dev-insight.cloud/about/)
+*   [好用的第三方库](https://dev-insight.cloud/tips/libs/) (收录一些好用的第三方库，持续更新中&hellip;&hellip;)
+*   [开发的技巧](https://dev-insight.cloud/tips/blogs/) (收录一些开发技巧，包括环境搭建、工具使用、代码片段等，持续更新中&hellip;&hellip;)
 <!--blog end-->
 
 ### 📚 Reading
