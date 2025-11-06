@@ -1,9 +1,13 @@
 name: Update README with WeRead
 on:
   schedule:
-    # Runs at 18:00 UTC (02:00 CST) every day
-    - cron: '0 18 * * *'
+    # 每 6 小时执行一次
+    - cron: '0 */6 * * *'
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   update-readme:
@@ -12,14 +16,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Update README with WeRead
-        uses: zhaohongxuan/weread-action@v1.2.8
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          # 微信读书的 Cookie，需要设置为仓库的 Secret
-          cookie: ${{ secrets.WEREAD_COOKIE }}
-          # 你的 GitHub Token，用于提交代码
-          gh_token: ${{ secrets.GITHUB_TOKEN }}
-          # 标记 README 中需要替换内容的位置
-          weread_token: weread
-          # 显示的书籍数量
-          book_num: 3
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run WeRead sync script
+        env:
+          WEREAD_COOKIE: ${{ secrets.WEREAD_COOKIE }}
+        run: python weread_sync.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          # 检查是否有更改，只有在有更改时才提交
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: Update reading list"
+            git push
+          else
+            echo "No changes to commit."
