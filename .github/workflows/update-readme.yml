@@ -1,9 +1,11 @@
-name: Update README with WeRead
+name: Update README
 on:
+  push:
+    branches:
+      - main # 或者你的默认分支，例如 master
   schedule:
     # 每 6 小时执行一次
     - cron: '0 */6 * * *'
-  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -43,8 +45,7 @@ jobs:
           git add README.md
           # 检查是否有更改，只有在有更改时才提交
           if ! git diff --staged --quiet; then
-            git commit -m "chore: Update reading list"
+            git commit -m "chore: Auto-update README"
             git push
           else
             echo "No changes to commit."
-          fi

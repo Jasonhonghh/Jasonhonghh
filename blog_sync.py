@@ -23,8 +23,17 @@ def fetch_blog_posts():
         # RSS feed 的 item 元素通常在 channel 下
         for item in root.findall('./channel/item'):
             title = item.find('title').text
+            
+            # 2. 去除 title 为 "About" 的博客
+            if title and title.strip().lower() == 'about':
+                continue
+
             link = item.find('link').text
-            posts.append({'title': title, 'link': link})
+            # 1. 获取 description
+            description_element = item.find('description')
+            description = description_element.text if description_element is not None else ""
+            
+            posts.append({'title': title, 'link': link, 'description': description.strip()})
             
         return posts[:POST_NUM]
         
@@ -40,7 +49,15 @@ def format_posts_md(posts):
         
     lines = []
     for post in posts:
-        lines.append(f"*   [{post['title']}]({post['link']})")
+        title = post.get('title')
+        link = post.get('link')
+        description = post.get('description')
+
+        # 1. 将 description 以括号的形式添加进来
+        if description:
+            lines.append(f"*   [{title}]({link}) ({description})")
+        else:
+            lines.append(f"*   [{title}]({link})")
             
     return "\n".join(lines)
 
