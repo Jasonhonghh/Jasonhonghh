@@ -7,7 +7,8 @@ WEREAD_COOKIE = os.environ.get("WEREAD_COOKIE")
 BOOK_NUM = 3 # 你想显示的书籍数量
 
 # --- API 和请求头 ---
-API_URL = "https://i.weread.qq.com/shelf/friendCommon"
+# 使用 shelf/sync 接口获取书架上的所有书籍
+API_URL = "https://i.weread.qq.com/shelf/sync"
 HEADERS = {
     "Host": "i.weread.qq.com",
     "Connection": "keep-alive",
@@ -26,16 +27,18 @@ def get_reading_books():
         return []
 
     try:
-        response = requests.get(API_URL, headers=HEADERS, timeout=10)
+        # 使用 POST 请求，并发送一个空的 synckey
+        response = requests.post(API_URL, headers=HEADERS, json={"synckey": 0}, timeout=10)
         response.raise_for_status()
         data = response.json()
         
-        # 'updated' 键包含了带进度的书籍
-        books = data.get("updated", [])
+        # 'books' 键包含了书架上的所有书籍
+        books = data.get("books", [])
         
         # 筛选正在读的书（进度 < 100%）并按进度降序排序
-        reading_books = [b for b in books if b.get("read_progress", 100) < 100]
-        reading_books.sort(key=lambda x: x.get("read_progress", 0), reverse=True)
+        # 注意：'readingProgress' 是 0-1 的浮点数
+        reading_books = [b for b in books if b.get("readingProgress", 1.0) < 1.0]
+        reading_books.sort(key=lambda x: x.get("readingProgress", 0), reverse=True)
         
         return reading_books[:BOOK_NUM]
     except requests.RequestException as e:
@@ -51,11 +54,12 @@ def format_books_md(books):
         
     lines = []
     for book in books:
-        book_info = book.get("book", {})
-        title = book_info.get("title")
-        author = book_info.get("author")
-        book_id = book_info.get("bookId")
-        progress = book.get("read_progress", 0)
+        # 新接口的 book_info 就是 book 本身
+        title = book.get("title")
+        author = book.get("author")
+        book_id = book.get("bookId")
+        # 将 0-1 的浮点数进度转换为百分比
+        progress = int(book.get("readingProgress", 0) * 100)
         
         if title and book_id:
             book_url = f"https://weread.qq.com/web/reader/{book_id}"
