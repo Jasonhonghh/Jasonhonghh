@@ -17,9 +17,9 @@
 
 ### 📚 Reading
 <!--weread start-->
+*   [架构整洁之道](https://search.douban.com/book/subject_search?search_text=%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93) - 罗伯特 C. 马丁
 *   [伊朗：被低估的文明与未完成的变革](https://search.douban.com/book/subject_search?search_text=%E4%BC%8A%E6%9C%97) - 迈克尔·阿克斯沃西
 *   [一个叫欧维的男人决定去死（同名电影原著）](https://search.douban.com/book/subject_search?search_text=%E4%B8%80%E4%B8%AA%E5%8F%AB%E6%AC%A7%E7%BB%B4%E7%9A%84%E7%94%B7%E4%BA%BA%E5%86%B3%E5%AE%9A%E5%8E%BB%E6%AD%BB) - 弗雷德里克·巴克曼
 *   [以日为鉴：衰退时代生存指南](https://search.douban.com/book/subject_search?search_text=%E4%BB%A5%E6%97%A5%E4%B8%BA%E9%89%B4) - 分析师Boden
 *   [在美国（2018年版）](https://search.douban.com/book/subject_search?search_text=%E5%9C%A8%E7%BE%8E%E5%9B%BD) - 苏珊·桑塔格
-*   [正念的奇迹](https://search.douban.com/book/subject_search?search_text=%E6%AD%A3%E5%BF%B5%E7%9A%84%E5%A5%87%E8%BF%B9) - 一行禅师
 <!--weread end-->
