@@ -5,7 +5,7 @@ import requests
 
 # --- 从环境变量中获取必要信息 ---
 WEREAD_COOKIE = os.environ.get("WEREAD_COOKIE")
-BOOK_NUM = 3 # 你想显示的书籍数量
+BOOK_NUM = 5 # 你想显示的书籍数量
 
 # --- API 和请求头 ---
 # 请求网页版书架
@@ -22,7 +22,7 @@ HEADERS = {
 }
 
 def get_reading_books():
-    """获取正在阅读的书籍列表"""
+    """获取书架上的前几本书籍"""
     if not WEREAD_COOKIE:
         print("错误：WEREAD_COOKIE 未设置")
         return []
@@ -39,28 +39,17 @@ def get_reading_books():
 
         data = json.loads(match.group(1))
         
-        # 获取所有书籍信息和进度信息
+        # 直接从 booksAndArchives 获取所有书籍信息
         all_books = data.get("shelf", {}).get("booksAndArchives", [])
-        progress_list = data.get("shelf", {}).get("bookProgress", [])
-
-        # 创建一个 bookId -> progress 的映射
-        progress_map = {item['bookId']: item['progress'] for item in progress_list}
-
-        reading_books = []
-        for book in all_books:
-            book_id = book.get("bookId")
-            # 只有在进度列表里存在的书才有进度
-            if book_id in progress_map:
-                progress = progress_map[book_id]
-                # 筛选正在读的书 (进度 > 0 且 < 100)
-                if 0 < progress < 100:
-                    book['readingProgress'] = progress
-                    reading_books.append(book)
         
-        # 按进度降序排序
-        reading_books.sort(key=lambda x: x.get("readingProgress", 0), reverse=True)
-        
-        return reading_books[:BOOK_NUM]
+        # --- 调试信息 ---
+        print("--- 调试信息 ---")
+        print(f"找到 'booksAndArchives' 数量: {len(all_books)}")
+        print("----------------")
+        # --- 调试结束 ---
+
+        # 直接返回书架上的前几本书
+        return all_books[:BOOK_NUM]
     except requests.RequestException as e:
         print(f"请求 API 失败: {e}")
     except Exception as e:
@@ -77,11 +66,11 @@ def format_books_md(books):
         title = book.get("title")
         author = book.get("author")
         book_id = book.get("bookId")
-        progress = book.get("readingProgress", 0)
         
         if title and book_id:
             book_url = f"https://weread.qq.com/web/reader/{book_id}"
-            lines.append(f"*   [{title}]({book_url}) - {author} (进度：{progress}%)")
+            # 不再显示进度
+            lines.append(f"*   [{title}]({book_url}) - {author}")
             
     return "\n".join(lines)
 
