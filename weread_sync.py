@@ -8,7 +8,7 @@ WEREAD_COOKIE = os.environ.get("WEREAD_COOKIE")
 BOOK_NUM = 3 # 你想显示的书籍数量
 
 # --- API 和请求头 ---
-# 参考 curl 命令，直接请求网页版书架
+# 请求网页版书架
 API_URL = "https://weread.qq.com/web/shelf"
 HEADERS = {
     "Host": "weread.qq.com",
@@ -28,25 +28,36 @@ def get_reading_books():
         return []
 
     try:
-        # 使用 GET 请求获取书架 HTML 页面
         response = requests.get(API_URL, headers=HEADERS, timeout=10)
         response.raise_for_status()
         html_content = response.text
 
-        # 使用正则表达式从 HTML 中提取 window.__INITIAL_STATE__
         match = re.search(r'window\.__INITIAL_STATE__\s*=\s*({.*?});', html_content)
         if not match:
             print("错误：无法在 HTML 中找到 __INITIAL_STATE__")
             return []
 
-        # 将提取的字符串解析为 JSON
         data = json.loads(match.group(1))
         
-        # 从 JSON 数据中获取书籍列表
-        books = data.get("shelf", {}).get("books", [])
+        # 获取所有书籍信息和进度信息
+        all_books = data.get("shelf", {}).get("booksAndArchives", [])
+        progress_list = data.get("shelf", {}).get("bookProgress", [])
+
+        # 创建一个 bookId -> progress 的映射
+        progress_map = {item['bookId']: item['progress'] for item in progress_list}
+
+        reading_books = []
+        for book in all_books:
+            book_id = book.get("bookId")
+            # 只有在进度列表里存在的书才有进度
+            if book_id in progress_map:
+                progress = progress_map[book_id]
+                # 筛选正在读的书 (进度 > 0 且 < 100)
+                if 0 < progress < 100:
+                    book['readingProgress'] = progress
+                    reading_books.append(book)
         
-        # 筛选正在读的书（进度 < 100%）并按进度降序排序
-        reading_books = [b for b in books if b.get("readingProgress", 1.0) < 1.0]
+        # 按进度降序排序
         reading_books.sort(key=lambda x: x.get("readingProgress", 0), reverse=True)
         
         return reading_books[:BOOK_NUM]
@@ -66,8 +77,7 @@ def format_books_md(books):
         title = book.get("title")
         author = book.get("author")
         book_id = book.get("bookId")
-        # 将 0-1 的浮点数进度转换为百分比
-        progress = int(book.get("readingProgress", 0) * 100)
+        progress = book.get("readingProgress", 0)
         
         if title and book_id:
             book_url = f"https://weread.qq.com/web/reader/{book_id}"
@@ -82,7 +92,6 @@ def update_readme(content):
         with open(readme_path, "r", encoding="utf-8") as f:
             readme_content = f.read()
         
-        # 使用正则表达式替换注释之间的内容
         new_readme = re.sub(
             r"<!--weread start-->[\s\S]*?<!--weread end-->",
             f"<!--weread start-->\n{content}\n<!--weread end-->",
