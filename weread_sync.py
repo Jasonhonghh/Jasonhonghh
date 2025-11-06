@@ -2,6 +2,7 @@ import os
 import re
 import json
 import requests
+import urllib.parse
 
 # --- 从环境变量中获取必要信息 ---
 WEREAD_COOKIE = os.environ.get("WEREAD_COOKIE")
@@ -65,11 +66,13 @@ def format_books_md(books):
     for book in books:
         title = book.get("title")
         author = book.get("author")
-        book_id = book.get("bookId")
         
-        if title and book_id:
-            book_url = f"https://weread.qq.com/web/reader/{book_id}"
-            # 不再显示进度
+        if title:
+            # 解析书名，只取主要部分用于搜索
+            main_title = re.split(r'[：（(]', title)[0].strip()
+            # 使用解析后的书名构造豆瓣搜索链接
+            book_url = f"https://search.douban.com/book/subject_search?search_text={urllib.parse.quote(main_title)}"
+            # 列表项中仍然显示完整书名
             lines.append(f"*   [{title}]({book_url}) - {author}")
             
     return "\n".join(lines)
