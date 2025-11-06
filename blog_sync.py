@@ -55,7 +55,7 @@ def format_posts_md(posts):
 
         # 1. 将 description 以括号的形式添加进来
         if description:
-            lines.append(f"*   [{title}]({link}) ({description})")
+            lines.append(f"*   [{title}]({link})：{description}")
         else:
             lines.append(f"*   [{title}]({link})")
             
