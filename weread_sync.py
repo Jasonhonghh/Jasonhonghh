@@ -1,5 +1,6 @@
 import os
 import re
+import json
 import requests
 
 # --- 从环境变量中获取必要信息 ---
@@ -7,10 +8,10 @@ WEREAD_COOKIE = os.environ.get("WEREAD_COOKIE")
 BOOK_NUM = 3 # 你想显示的书籍数量
 
 # --- API 和请求头 ---
-# 使用 shelf/sync 接口获取书架上的所有书籍
-API_URL = "https://i.weread.qq.com/shelf/sync"
+# 参考 curl 命令，直接请求网页版书架
+API_URL = "https://weread.qq.com/web/shelf"
 HEADERS = {
-    "Host": "i.weread.qq.com",
+    "Host": "weread.qq.com",
     "Connection": "keep-alive",
     "Upgrade-Insecure-Requests": "1",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36",
@@ -27,16 +28,24 @@ def get_reading_books():
         return []
 
     try:
-        # 使用 POST 请求，并发送一个空的 synckey
-        response = requests.post(API_URL, headers=HEADERS, json={"synckey": 0}, timeout=10)
+        # 使用 GET 请求获取书架 HTML 页面
+        response = requests.get(API_URL, headers=HEADERS, timeout=10)
         response.raise_for_status()
-        data = response.json()
+        html_content = response.text
+
+        # 使用正则表达式从 HTML 中提取 window.__INITIAL_STATE__
+        match = re.search(r'window\.__INITIAL_STATE__\s*=\s*({.*?});', html_content)
+        if not match:
+            print("错误：无法在 HTML 中找到 __INITIAL_STATE__")
+            return []
+
+        # 将提取的字符串解析为 JSON
+        data = json.loads(match.group(1))
         
-        # 'books' 键包含了书架上的所有书籍
-        books = data.get("books", [])
+        # 从 JSON 数据中获取书籍列表
+        books = data.get("shelf", {}).get("books", [])
         
         # 筛选正在读的书（进度 < 100%）并按进度降序排序
-        # 注意：'readingProgress' 是 0-1 的浮点数
         reading_books = [b for b in books if b.get("readingProgress", 1.0) < 1.0]
         reading_books.sort(key=lambda x: x.get("readingProgress", 0), reverse=True)
         
@@ -54,7 +63,6 @@ def format_books_md(books):
         
     lines = []
     for book in books:
-        # 新接口的 book_info 就是 book 本身
         title = book.get("title")
         author = book.get("author")
         book_id = book.get("bookId")
