@@ -1,6 +1,13 @@
-# 👋 你好，我是 Hong
+# 👋 Hi
 
-### 💼 关于我
+### 💼 About Me
+你好，我是Jasonhonghh，正在学习和探索各种编程技术和工具，目标是成为一名全栈开发工程师。
+
+### Code Activities
+[![Contributions Badge](https://badges.strrl.dev/contributions/all/Jasonhonghh?style=flat-square)](https://github.com/Jasonhonghh)
+[![Contributions Badge](https://badges.strrl.dev/contributions/weekly/Jasonhonghh?style=flat-square)](https://github.com/Jasonhonghh)
+[![Commits Badge](https://badges.strrl.dev/commits/weekly/Jasonhonghh?style=flat-square)](https://github.com/Jasonhonghh)
+[![Issues and PRs Badge](https://badges.strrl.dev/issues-and-prs/weekly/Jasonhonghh?style=flat-square)](https://github.com/Jasonhonghh)
 
 ### 📖 Posts
 <!--blog start-->
