@@ -12,6 +12,8 @@ concurrency:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # <-- 添加这一行来授予写权限
     steps:
       - name: Checkout
         uses: actions/checkout@v4
