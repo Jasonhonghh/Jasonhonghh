@@ -1,5 +1,5 @@
 import re
-import requests
+import cloudscraper # 导入 cloudscraper
 import xml.etree.ElementTree as ET
 
 # --- 配置 ---
@@ -10,16 +10,11 @@ README_PATH = "README.md"
 def fetch_blog_posts():
     """从 XML feed 获取最新的博客文章"""
     try:
-        # 添加 User-Agent 模拟浏览器访问
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
-        }
-        # 显式禁用代理，以防环境中有代理设置导致连接失败
-        proxies = {
-            "http": None,
-            "https": None,
-        }
-        response = requests.get(BLOG_FEED_URL, headers=headers, timeout=15, proxies=proxies)
+        # 创建一个 cloudscraper 实例
+        scraper = cloudscraper.create_scraper()
+        
+        # 使用 scraper 发送请求，它会自动处理 Cloudflare 质询
+        response = scraper.get(BLOG_FEED_URL, timeout=15)
         response.raise_for_status()
         
         root = ET.fromstring(response.content)
@@ -33,12 +28,9 @@ def fetch_blog_posts():
             
         return posts[:POST_NUM]
         
-    except requests.RequestException as e:
-        print(f"请求博客 Feed 失败: {e}")
-    except ET.ParseError as e:
-        print(f"解析 XML 时发生错误: {e}")
     except Exception as e:
-        print(f"处理博客文章时发生未知错误: {e}")
+        # cloudscraper 可能会抛出自己的异常，但用通用的 Exception 也能捕获
+        print(f"请求或处理博客 Feed 时发生错误: {e}")
     return []
 
 def format_posts_md(posts):
