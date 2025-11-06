@@ -17,6 +17,9 @@
 ### 🌱 正在学习
 - 后端技术栈、分布式系统、机器学习算法
 
+### 📚 正在读
+<!--weread start-->
+<!--weread end-->
   
 ### 📫 联系我
 - 邮箱: jasonhonghh@gmail.com

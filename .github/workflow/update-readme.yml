@@ -1,0 +1,23 @@
+name: Update README with WeRead
+on:
+  schedule:
+    # Runs at 00:00 UTC every day
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update README with WeRead stats
+        uses: werdnum/weread-box@v2.0.0
+        with:
+          # 微信读书的 Cookie，需要设置为仓库的 Secret
+          cookie: ${{ secrets.WEREAD_COOKIE }}
+          # 显示的书籍数量
+          book_num: 3
+          # 分支名称
+          branch: main
