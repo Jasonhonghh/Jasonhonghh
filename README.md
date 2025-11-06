@@ -28,9 +28,6 @@
   
 ### 📫 联系我
 - 邮箱: jasonhonghh@gmail.com
-- 网站: [dev-insight](https://dev-insight.cloud/)
+- 网站: [dev-insight.cloud](https://dev-insight.cloud/)
 
 欢迎查看我的项目，任何问题都可以通过邮箱联系我！
-
-
-![我的GitHub统计](https://github-readme-stats.vercel.app/api?username=jasonhonghh&show_icons=true)
