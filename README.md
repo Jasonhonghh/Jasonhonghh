@@ -18,8 +18,8 @@
 ### 📚 Reading
 <!--weread start-->
 *   [以日为鉴：衰退时代生存指南](https://search.douban.com/book/subject_search?search_text=%E4%BB%A5%E6%97%A5%E4%B8%BA%E9%89%B4) - 分析师Boden
+*   [refactoring2](https://search.douban.com/book/subject_search?search_text=refactoring2) - Unknown
 *   [被讨厌的勇气：“自我启发之父”阿德勒的哲学课](https://search.douban.com/book/subject_search?search_text=%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94) - 岸见一郎 古贺史健
 *   [哈利波特完整系列（全七册）](https://search.douban.com/book/subject_search?search_text=%E5%93%88%E5%88%A9%E6%B3%A2%E7%89%B9%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97) - [英]J.K.罗琳
 *   [架构整洁之道](https://search.douban.com/book/subject_search?search_text=%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93) - 罗伯特 C. 马丁
-*   [伊朗：被低估的文明与未完成的变革](https://search.douban.com/book/subject_search?search_text=%E4%BC%8A%E6%9C%97) - 迈克尔·阿克斯沃西
 <!--weread end-->
