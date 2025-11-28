@@ -19,9 +19,9 @@
 
 ### 📚 Reading
 <!--weread start-->
+*   [人偶游戏](https://search.douban.com/book/subject_search?search_text=%E4%BA%BA%E5%81%B6%E6%B8%B8%E6%88%8F) - [日]东野圭吾
 *   [当我们不再理解世界（短经典精选）](https://search.douban.com/book/subject_search?search_text=%E5%BD%93%E6%88%91%E4%BB%AC%E4%B8%8D%E5%86%8D%E7%90%86%E8%A7%A3%E4%B8%96%E7%95%8C) - 本哈明·拉巴图特
 *   [以日为鉴：衰退时代生存指南](https://search.douban.com/book/subject_search?search_text=%E4%BB%A5%E6%97%A5%E4%B8%BA%E9%89%B4) - 分析师Boden
 *   [一个叫欧维的男人决定去死（同名电影原著）](https://search.douban.com/book/subject_search?search_text=%E4%B8%80%E4%B8%AA%E5%8F%AB%E6%AC%A7%E7%BB%B4%E7%9A%84%E7%94%B7%E4%BA%BA%E5%86%B3%E5%AE%9A%E5%8E%BB%E6%AD%BB) - 弗雷德里克·巴克曼
 *   [伊朗：被低估的文明与未完成的变革](https://search.douban.com/book/subject_search?search_text=%E4%BC%8A%E6%9C%97) - 迈克尔·阿克斯沃西
-*   [架构整洁之道](https://search.douban.com/book/subject_search?search_text=%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93) - 罗伯特 C. 马丁
 <!--weread end-->
