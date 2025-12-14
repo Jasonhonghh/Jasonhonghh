@@ -11,11 +11,11 @@
 
 ### 📖 Posts
 <!--blog start-->
+*   [周记#4：Let's go, 拥抱 AI](https://dev-insight.cloud/diary/diary4/)：MIT 6.824、Copilot与Trae。
 *   [周记#3：生图仙人与群像故事](https://dev-insight.cloud/diary/diary3/)：体验AI生图与最近在看的好剧。
 *   [周记#2：请务必平静的前进](https://dev-insight.cloud/diary/diaty2/)：Copilot Plan体验和最近的感受。
 *   [周记#1：衰退时代生存指南与初步实践](https://dev-insight.cloud/diary/diary1/)：第一篇周记，记录近期的读书和实践经历。
 *   [好用的第三方库](https://dev-insight.cloud/tips/libs/)：收录一些好用的第三方库。
-*   [开发的技巧](https://dev-insight.cloud/tips/blogs/)：收录一些开发技巧，包括环境搭建、工具使用、代码片段等。
 <!--blog end-->
 
 ### 📚 Reading
