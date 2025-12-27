@@ -11,7 +11,7 @@
 
 ### 📖 Posts
 <!--blog start-->
-*   [周记#5：Go竞态检测与Hello-Agents](https://dev-insight.cloud/diary/diary5/)：学习了一下低代码智能体，添加了“今天看什么”的功能
+*   [周记#5：Go竞态检测与Hello-Agents](https://dev-insight.cloud/diary/diary5/)：学习了一下低代码智能体，添加了“今天看什么”的功能。
 *   [周记#4：Let's go, 拥抱 AI](https://dev-insight.cloud/diary/diary4/)：MIT 6.824、Copilot与Trae。
 *   [周记#3：生图仙人与群像故事](https://dev-insight.cloud/diary/diary3/)：体验AI生图与最近在看的好剧。
 *   [周记#2：请务必平静的前进](https://dev-insight.cloud/diary/diaty2/)：Copilot Plan体验和最近的感受。
